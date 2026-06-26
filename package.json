@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://<username>.github.io/klubokawiarniaMlodszaSiostra",
+  "homepage": "https://wszczepanskii.github.io/klubojadalniaMlodszaSiostra",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
