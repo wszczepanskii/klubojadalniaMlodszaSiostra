@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --color-courtyard: #0c0a09;
+  --color-asphalt: #1c1917;
+  --color-poster: #ea580c;
+  --color-neon: #f97316;
+  --color-moss: #65a30d;
+  --color-dust: #d6d3d1;
+  --color-cream: #faf7f2;
+  --color-berry: #be185d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-courtyard text-cream font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-poster text-cream;
+  }
+}
+
+@layer utilities {
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  .poster-halftone {
+    background-color: #1c1917;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(234, 88, 12, 0.18) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(190, 24, 93, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(101, 163, 13, 0.06) 0%, transparent 55%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.015) 3px,
+        rgba(255, 255, 255, 0.015) 4px
+      );
+  }
+
+  .poster-glow {
+    background: linear-gradient(
+      165deg,
+      rgba(12, 10, 9, 0.2) 0%,
+      transparent 35%,
+      rgba(12, 10, 9, 0.5) 100%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
