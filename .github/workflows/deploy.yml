@@ -10,9 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+# Queue deployments — do NOT cancel in-progress Pages deploys.
+# cancel-in-progress: true can leave a half-finished deployment on GitHub's side
+# and cause "Please cancel … in progress deployment first" on the next run.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -24,11 +27,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
-      # npm install (not npm ci) — lock file generated on Windows may lack
-      # Linux-only optional deps (e.g. @emnapi/* from vite/oxlint native bindings)
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
